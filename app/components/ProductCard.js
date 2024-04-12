@@ -3,11 +3,14 @@ import numeral from "numeral";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-const ProductCard = ({ image, name, price, model, am, color }) => {
+const ProductCard = ({ image, name, price, model, am, color, carID }) => {
   const router = useRouter()
-  const handleClick = () => {
-    router.push('/rent')
-  };
+  // const handleClick = () => {
+  //   // router.push('/rent')
+  // router.push(`/rent?carID=${carID}`)
+  // // window.location.href = `/rent?carID=${carID}`;
+  
+  // };
   return (
     <div className="mt-[40px] ml-[60px] bg-white border border-gray-300 shadow-md rounded-sm p-1 w-[400px] h-[500px] md-20 overflow-hidden">
       <img
@@ -43,9 +46,14 @@ const ProductCard = ({ image, name, price, model, am, color }) => {
           <p className="text-gray-700 mb-2">{color}</p>
         </div>
       </div>
-      <button onClick={handleClick} className="bg-[#00ADB5] text-white text-lg px-4 py-2 font-light rounded-md ml-[70px] mt-3 h-10 w-[250px]">
+      <Link href={{
+        pathname: "/rent",
+        query: {carID: carID}
+      }}> 
+      <button className="bg-[#00ADB5] text-white text-lg px-4 py-2 font-light rounded-md ml-[70px] mt-3 h-10 w-[250px]">
         RENT
       </button>
+      </Link>
     </div>
   );
 };

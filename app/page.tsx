@@ -3,13 +3,14 @@
 import Image from "next/image";
 import Navbar from "./components/Navbar";
 import Link from "next/link";
-import { useRouter } from 'next/navigation'
 
 export default function LandingHome() {
-  const router = useRouter()
 
-  if (localStorage.getItem('token')) {
-    router.push('/home')
+  if (typeof window !== 'undefined') {
+    // Code that uses localStorage
+    if (localStorage.getItem('token')) {
+      window.location.href = '/home';
+    }
   }
   return (
     <>

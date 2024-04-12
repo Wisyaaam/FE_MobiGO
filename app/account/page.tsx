@@ -10,7 +10,11 @@ export default function Account() {
     const [emailChange, setEmailChange] = useState("");
     const [phoneChange, setPhoneChange] = useState("");
     const [usernameChange, setUsernameChange] = useState("");
-    const token = localStorage.getItem('token');
+    let token:any = null
+    if (typeof window !== 'undefined') {
+        token = localStorage.getItem('token');
+        // Code that uses localStorage
+      }
 
     useEffect(() => {
         // const getUser = async () => {
